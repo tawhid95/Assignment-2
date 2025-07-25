@@ -470,9 +470,7 @@ footer {
 /*----------------------------media query--------*/
 
 @media (max-width: 576px) {
-  body {
-    /* background-color: gray; */
-  }
+  
 
   header,
   .hero-section__content,
@@ -655,5 +653,16 @@ footer {
   gap: 20px;
 }
 
+.footer__text {
+  width: 100%;
 }
 
+}
+
+
+/*========================== hover effect ============*/
+
+.nav__menu li a:hover {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
