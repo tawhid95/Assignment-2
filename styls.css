@@ -17,10 +17,15 @@
   --cart-font-color: rgba(17, 17, 17, 1);
   --footer-link-color: rgba(107, 114, 128, 1);
 
+  --regular-font-size: 1rem;
   --medium-font-size: 1.25rem;
   --big-font-size: 1.375rem;
   --bigger-font-size: 3.125rem;
   --biggest-font-size: 4rem;
+  /*     for mobile responsive  */
+  --xl-font-size: 1.5rem;
+  --small-font-size: 0.875rem;
+  /*     for mobile responsive  */
 
   --bold-font-weight: 700;
   --semibold-font-weight: 600;
@@ -48,7 +53,7 @@ a {
   color: inherit;
 }
 
-img {
+* img {
   max-width: 100%;
   height: auto;
   display: block;
@@ -73,6 +78,7 @@ header {
   max-width: 1140px;
   margin: 0 auto;
   padding-top: 30px;
+  background-color: transparent;
 }
 
 .header__container {
@@ -123,21 +129,17 @@ header {
 }
 
 .hero-section__container {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: end;
 }
 
-.hero-section__content {
-  width: 50%;
-  padding-left: 5px;
-  padding-bottom: 8px;
-}
-
-.hero-section__img {
-  width: 50%;
+.hero-section__img img {
+  width: 570px;
+  height: 355px;
+  max-width: 100%;
+  height: auto;
   border-radius: 13px;
-  overflow: hidden;
 }
 
 .hero-section__title {
@@ -177,17 +179,12 @@ header {
 
 .our-plants__carts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(270px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--grid-gap);
-  width: 100;
-}
-
-.our-plants__details {
-  text-align: center;
 }
 
 .our-plants__cart {
-  padding: 12px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
@@ -197,6 +194,10 @@ header {
 .our-plants__img img {
   border-radius: 8px;
   margin-bottom: 10px;
+}
+
+.our-plants__details {
+  text-align: center;
 }
 
 .flower__name {
@@ -213,13 +214,12 @@ header {
 
 .cart__button {
   cursor: pointer;
-  display: inline-block;
   background-color: var(--primary-color);
   color: var(--bg-color-1);
   font-weight: var(--semibold-font-weight);
   padding: 26px 50px;
-  width: 100%;
   border-radius: 8px;
+  width: 100%;
 }
 
 /*-----------------------about us-----------------*/
@@ -228,14 +228,20 @@ header {
   margin: 200px auto 134px;
 }
 
-.about__container {
+/* .about__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+} */
+
+.about__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 62px;
+  place-items: center;
 }
 
 .about__img {
-  width: 540px;
   position: relative;
 }
 
@@ -260,10 +266,6 @@ header {
   to {
     transform: rotate(360deg);
   }
-}
-
-.about__content {
-  width: 540px;
 }
 
 .about__content > h2 {
@@ -381,7 +383,6 @@ header {
 }
 
 .contact__item {
-  /* background-color: gray; */
   display: flex;
   flex-direction: column;
   gap: 23px;
@@ -465,3 +466,194 @@ footer {
   width: 36px;
   height: 36px;
 }
+
+/*----------------------------media query--------*/
+
+@media (max-width: 576px) {
+  body {
+    /* background-color: gray; */
+  }
+
+  header,
+  .hero-section__content,
+  .our-plants__carts,
+  .about-us,
+  .offers__flowers,
+  footer {
+    padding-inline: 16px;
+  }
+
+  .hero-section__title,
+  .our-plants__content h2,
+  .about__content h2,
+  .offers__content h2 {
+    font-size: var(--xl-font-size);
+    font-weight: var(--bold-font-weight);
+  }
+
+  .section__description,
+  .about__description {
+    font-size: var(--small-font-size);
+  }
+
+  /*================================ header==========*/
+
+  .nav__menu li:nth-child(1) {
+    display: none;
+  }
+  .nav__menu li:nth-child(2) {
+    display: none;
+  }
+  .nav__menu li:nth-child(3) {
+    display: none;
+  }
+
+  .section__title {
+    font-size: 16px;
+  }
+
+  header {
+    padding-top: 13px;
+  }
+
+  /*========================== section hero ===========*/
+
+  .hero-section {
+    margin-inline: auto;
+    margin-block: 28px 65px;
+  }
+
+  .hero-section__container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section__img {
+    order: 1;
+    margin-bottom: 28px;
+    margin-inline: 0;
+  }
+  .hero-section__img img {
+    /* width: 394px;
+    height: 245px; */
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  .hero-section__content {
+    width: 100%;
+    order: 2;
+  }
+
+  /*====================================our-plants=======*/
+
+  .our-plants__container {
+    gap: 28px;
+  }
+
+  .our-plants__content h2 {
+    margin-bottom: 16px;
+  }
+
+  .our-plants__carts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .flower__name,
+  .flower__price {
+    font-size: var(--regular-font-size);
+  }
+
+  .cart__button {
+    padding: 13px 25px;
+  }
+
+  /*===================== about us =====*/
+
+  .about-us {
+    margin-block: 42px 142px;
+  }
+
+  .trusted-badge {
+    display: none;
+  }
+
+  /* .about__container {
+    flex-direction: column;
+    gap: 18px;
+  } */
+
+  .about__container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .about__description {
+    padding-left: 25px;
+  }
+
+  /*=============== offer section ===*/
+
+  .offers__content {
+    margin-bottom: 50px;
+  }
+
+  .offers__flowers {
+    grid-template-columns: 1fr;
+  }
+
+  .offers__flowers .offers__flower:nth-child(1) {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .offers__flowers .offers__flower:nth-child(2) {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  .offers__flowers .offers__flower:nth-child(3) {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+
+  .flower__content h3 {
+    font-size: var(--big-font-size);
+  }
+
+  .flower__content button a {
+    font-size: var(--regular-font-size);
+  }
+
+  /*================ contact ========*/
+
+  .contact {
+    margin-top: 40px;
+  }
+
+  .contact__container {
+    min-height: 276px;
+  }
+
+  .contact__item h2 {
+    font-size: var(--medium-font-size);
+  }
+
+  .contact__item {
+    max-width: 321px;
+    height: 100px;
+    width: 100%;
+  }
+
+  .contact__form button {
+    padding: 15px 12px;
+  }
+
+  /*================= footer==========*/
+
+.footer__container {
+  flex-direction: column;
+  gap: 20px;
+}
+
+}
+
